@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="static/styles/bootstrap.min.css">
+        <link rel="stylesheet" href="static/styles/style.css">
+        
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		
+		<title>Home | Cryptocurrency &amp; Stock Calculators</title>
+    </head>
+
+    <body>
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+			<a class="navbar-brand" href="index.html">Cryptocurrency &amp; Stock Tools</a>
+
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="cryptocurrency.html">Cryptocurrency</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="stocks.html">Stocks</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="about.html">About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="contact.html">Contact Us</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+        
+        <div class="container">
+			<div class="jumbotron center-content">
+				<h1>Welcome to Cryptocurrency &amp; Stock Tools!</h1>
+				<p class="lead">Built using HTML/CSS &amp; Javascript/JQuery on a Flask web server.</p>
+			</div>
+
+			<div name="bitcoin-chart-section">
+				<h3 class="center-content"><strong>Cryptocurrency Value Chart (Past 30 Days):</strong></h3>
+				<div class="center">
+					<canvas id="bitcoinChart" width="1000" height="550"></canvas>
+				</div>
+			</div>
+
+			<h2 class="center-content vertical-top-lg vertical-bottom"><strong>Interested in more? Click the links at the top!</strong></h2>
+
+			<footer class="footer">
+				<div class="flex-grid">
+					<div class="col">
+						Cryptocurrency prices courtesy of <a class="underline" target="_blank" style="color: white" href="https://www.cryptocompare.com/">CryptoCompare</a>.
+					</div>
+
+					<div class="col">
+						Made with ❤️ in College Park, Maryland in 2018. Go Terps!
+					</div>
+
+					<div class="col">
+						Stock data provided for free by 
+						<a class="underline" target="_blank" style="color: white" href="https://iextrading.com/developer">IEX</a>. 
+						View <a class="underline" target="_blank" style="color: white" href="https://iextrading.com/api-exhibit-a/">IEX’s Terms of Use</a>.
+					</div>
+				</div>
+			</footer>
+        </div>
+		
+		<!-- Handles making the current page active on the navbar -->
+		<script>
+			$(function(){
+				$('a').each(function(){
+					if ($(this).prop('href') == window.location.href) {
+						$(this).addClass('active');
+					}
+				});
+			});
+		</script>
+		
+		<script src="static/moment.js"></script>
+		<script src="static/date.format.js"></script>
+		<script src="static/Chart.min.js"></script>
+		<script src="static/home-graphs.js"></script>
+    </body>
+</html>
+
