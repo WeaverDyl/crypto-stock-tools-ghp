@@ -42,6 +42,7 @@ $(document).ready(function() {
     var portfolioFieldCounter = 2; // The value of portfolio field to add ('1' is the default one)    
     // Add a new portfolio entry field
     $("#portfolio-add-button").click(function () {
+        console.log("clicked")
         // If the user tries to add too many entry (10, right now), alert them that they can't add more
         if (portfolioFieldCounter > 10) {
             $('#portfolio-result').html("You can't add any more fields!");
