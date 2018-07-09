@@ -80,15 +80,18 @@ footer {
 }
 .flex-grid {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     text-align: center;
 }
 .flex-inner-col {
+    flex-wrap: wrap;
     padding-top: 5px;
     padding-right: 5px;
     padding-left: 5px;
 }
 .flex-inner-col-middle {
+    flex-wrap: wrap;
     padding-left: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
