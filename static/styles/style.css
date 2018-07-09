@@ -110,14 +110,18 @@ footer {
     justify-content: center;
     align-items: center;
 }
-/* Only show middle column of footer on mobile */
+/* mobile only */
 @media (max-width: 480px) {
     .fc-1,.fc-3 {
        display: none;
     }
-}
-@media (max-width: 480px) {
     .mh-overflow {
         margin-bottom: 50px;
     }
- }
+    .button-overflow {
+        margin-bottom: 30px;
+    }
+    .text-overflow {
+        margin-bottom: 30px;
+    }
+}
