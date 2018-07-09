@@ -117,7 +117,7 @@ footer {
     }
 }
 @media (max-width: 480px) {
-    .mh {
+    .mh-overflow {
         margin-bottom: 50px;
     }
  }

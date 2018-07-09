@@ -1,6 +1,6 @@
 # crypto-stock-tools-ghp
 
-A live version of [this](https://github.com/WeaverDyl/Cryptocurrency-Stock-Tools) that I'm hosting on Github Pages. That's all.
+A project that I'm hosting on Github Pages. That's all.
 
 See the demo [here](https://www.weaverdyl.com/crypto-stock-tools-ghp/).
 
