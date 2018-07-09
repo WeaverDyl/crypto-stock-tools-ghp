@@ -114,11 +114,8 @@ footer {
     .fc-1,.fc-3 {
        display: none;
     }
-    .mh-overflow {
+    .mh-overflow, .button-overflow {
         margin-bottom: 50px;
-    }
-    .button-overflow {
-        margin-bottom: 30px;
     }
     .text-overflow {
         margin-bottom: 20px;
