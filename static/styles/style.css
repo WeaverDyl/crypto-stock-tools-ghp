@@ -93,9 +93,8 @@ footer {
 .flex-inner-col-middle {
     flex-wrap: wrap;
     padding-left: 5px;
+    padding-right: 5px;
     padding-top: 5px;
-    padding-bottom: 5px;
-    padding-bottom: 0px;
 }
 .coin {
     width: 50px;
