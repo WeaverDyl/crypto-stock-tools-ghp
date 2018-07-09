@@ -45,68 +45,74 @@
 				<h3 class="lead vertical-bottom"><strong>Easily calculate the prices of various numbers of the following cryptocurrencies!</strong></h3>
 				
 				<div class="flex-grid">
-					<div class="col">
-						<div class="flex-grid lead">
-							<div class="flex-inner-col">
-								<input id="number-of-bitcoins" class="form-control center-content" type="text" value="1.00" placeholder="1.00" style="width: 125px" autocomplete="off">
-								<p>Bitcoin</p>
+					<span class="form-line">
+						<div class="col">
+							<div class="flex-grid lead">
+								<div class="flex-inner-col">
+									<input id="number-of-bitcoins" class="form-control center-content" type="text" value="1.00" placeholder="1.00" style="width: 125px" autocomplete="off">
+									<p>Bitcoin</p>
+								</div>
+	
+								<div class="flex-inner-col-middle">
+									<p>=</p>
+								</div>
+	
+								<div class="flex-inner-col">
+									<input id="bitcoin-to-usd" class="form-control disabled center-content" type="text" readonly="readonly" style="width: 125px" placeholder="?" autocomplete="off">
+									<p>USD</p>
+								</div>
 							</div>
-
-							<div class="flex-inner-col-middle">
-								<p>=</p>
-							</div>
-
-							<div class="flex-inner-col">
-								<input id="bitcoin-to-usd" class="form-control disabled center-content" type="text" readonly="readonly" style="width: 125px" placeholder="?" autocomplete="off">
-								<p>USD</p>
-							</div>
-						</div>
-						
-						<h3 id="bitcoin-current-price-error" class="result-message lead vertical-bottom"></h3>
-						<button id="current-bitcoin-price-button" type="button" class="btn btn-primary btn-lg">Calculate</button>
-					</div>
-					
-					<div class="col">
-						<div class="flex-grid lead">
-							<div class="flex-inner-col">
-								<input id="number-of-ethereum" class="form-control center-content" type="text" value="1.00" placeholder="1.00" style="width: 125px" autocomplete="off">
-								<p>Ethereum</p>
-							</div>
-
-							<div class="flex-inner-col-middle">
-								<p>=</p>
-							</div>
-
-							<div class="flex-inner-col">
-								<input id="ethereum-to-usd" class="form-control disabled center-content" type="text" readonly="readonly" style="width: 125px" placeholder="?" autocomplete="off">
-								<p>USD</p>
-							</div>
-						</div>
 							
-						<h3 id="ethereum-current-price-error" class="result-message lead vertical-bottom"></h3>
-						<button id="current-ethereum-price-button" type="button" class="btn btn-primary btn-lg">Calculate</button>
-					</div>
-					
-					<div class="col">
-						<div class="flex-grid lead">
-							<div class="flex-inner-col">
-								<input id="number-of-litecoin" class="form-control center-content" type="text" value="1.00" placeholder="1.00" style="width: 125px" autocomplete="off">
-								<p>Litecoin</p>
-							</div>
-
-							<div class="flex-inner-col-middle">
-								<p>=</p>
-							</div>
-
-							<div class="flex-inner-col">
-								<input id="litecoin-to-usd" class="form-control disabled center-content" type="text" readonly="readonly" style="width: 125px" placeholder="?" autocomplete="off">
-								<p>USD</p>
-							</div>
+							<h3 id="bitcoin-current-price-error" class="result-message lead vertical-bottom"></h3>
+							<button id="current-bitcoin-price-button" type="button" class="btn btn-primary btn-lg button-overflow">Calculate</button>
 						</div>
-							
-						<h3 id="litecoin-current-price-error" class="result-message lead vertical-bottom"></h3>
-						<button id="current-litecoin-price-button" type="button" class="btn btn-primary btn-lg">Calculate</button>
-					</div>
+					</span>
+					
+					<span class="form-inline">
+						<div class="col">
+							<div class="flex-grid lead">
+								<div class="flex-inner-col">
+									<input id="number-of-ethereum" class="form-control center-content" type="text" value="1.00" placeholder="1.00" style="width: 125px" autocomplete="off">
+									<p>Ethereum</p>
+								</div>
+	
+								<div class="flex-inner-col-middle">
+									<p>=</p>
+								</div>
+	
+								<div class="flex-inner-col">
+									<input id="ethereum-to-usd" class="form-control disabled center-content" type="text" readonly="readonly" style="width: 125px" placeholder="?" autocomplete="off">
+									<p>USD</p>
+								</div>
+							</div>
+								
+							<h3 id="ethereum-current-price-error" class="result-message lead vertical-bottom"></h3>
+							<button id="current-ethereum-price-button" type="button" class="btn btn-primary btn-lg button-overflow">Calculate</button>
+						</div>
+					</span>
+					
+					<span class="form-inline">
+						<div class="col">
+							<div class="flex-grid lead">
+								<div class="flex-inner-col">
+									<input id="number-of-litecoin" class="form-control center-content" type="text" value="1.00" placeholder="1.00" style="width: 125px" autocomplete="off">
+									<p>Litecoin</p>
+								</div>
+	
+								<div class="flex-inner-col-middle">
+									<p>=</p>
+								</div>
+	
+								<div class="flex-inner-col">
+									<input id="litecoin-to-usd" class="form-control disabled center-content" type="text" readonly="readonly" style="width: 125px" placeholder="?" autocomplete="off">
+									<p>USD</p>
+								</div>
+							</div>
+								
+							<h3 id="litecoin-current-price-error" class="result-message lead vertical-bottom"></h3>
+							<button id="current-litecoin-price-button" type="button" class="btn btn-primary btn-lg button-overflow">Calculate</button>
+						</div>
+					</span>
 				</div>
 			</div>
 
