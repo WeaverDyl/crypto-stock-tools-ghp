@@ -115,4 +115,9 @@ footer {
     .fc-1,.fc-3 {
        display: none;
     }
+}
+@media (max-width: 480px) {
+    .mh {
+        margin-bottom: 50px;
+    }
  }
