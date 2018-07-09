@@ -1,6 +1,8 @@
 $(document).ready(function() {
     // Set the maximum date to today for the fear-of-missing-out calculator calendar
-    $('#fomo-date').prop('max', new Date().format("yyyy-mm-dd"));
+    $.datepicker.setDefaults({
+        maxDate: new Date().format("mm/dd/yyyy")
+    });
 
     // Set current cryptocurrency prices on page load
     var $bitcoinElem = $('#bitcoin-to-usd');
