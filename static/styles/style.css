@@ -110,3 +110,9 @@ footer {
     justify-content: center;
     align-items: center;
 }
+/* Only show middle column of footer on mobile */
+@media (max-width: 320px) {
+    .fc-1,.fc-3 {
+       display: none;
+    }
+ }
