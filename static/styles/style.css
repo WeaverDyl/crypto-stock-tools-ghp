@@ -53,15 +53,16 @@ html {
     min-height: 100%;
 }
 footer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
     position: absolute;
     right: 0;
     left: 0;
     bottom: 0;
     height: 60px;
-    line-height: 57px;
     background-color: #343a40;
     color: white;
-    overflow: hidden;
 }
 .result-message {
     font-weight: bold;
@@ -108,6 +109,11 @@ footer {
     text-align: center;
     justify-content: center;
     align-items: center;
+}
+/* ie / edge */
+.ie {
+    display: inline-block;
+    min-width: 322px;
 }
 /* mobile only */
 @media (max-width: 480px) {
