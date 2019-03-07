@@ -309,13 +309,14 @@ function showStockInformation(userTicker) {
  * @param {Boolean} asyncVal Where the function should run asynchronously or not
  */
 function getStockPrice(tickerSymbol, asyncVal) {
-    var url = `https://api.iextrading.com/1.0/stock/${tickerSymbol}/quote`;
+    var publish_token = "pk_7fe33404a0bc4358a68c94dbc0656bba";
+    var url = `https://cloud.iexapis.com/beta/stock/${tickerSymbol}/quote?token=${publish_token}`;
     
     // Return JSON parse
     return $.ajax({url: url, async: asyncVal});
 }
 
-// Ticker symbols and company names, used in autocomplete 
+// Ticker symbols and company names, used in autocomplete
 var tickers = [            
     {
         value: "A",
