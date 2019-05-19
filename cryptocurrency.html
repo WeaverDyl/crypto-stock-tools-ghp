@@ -126,9 +126,10 @@
 						<input id="fomo-amount-invested" class="form-control center-content" type="text" placeholder="0.00" style="width: 100px" autocomplete="off">
 						<h4 class="horizontal lead">in Bitcoin on</h4>
 						<input id="fomo-date" class="form-control center-content" type="text" placeholder="mm/dd/yyyy" style="width: 125px" autocomplete="off">
-						<h4 class="horizontal lead">, you would have this much</h4>
-						<h4 class="lead">money today: $</h4>
+						<h4 class="horizontal lead">, you would have</h4>
+						<h4 class="lead">$</h4>
 						<input id="fomo-amount-gained" class="form-control disabled center-content horizontal" type="text" placeholder="0.00" readonly="readonly" style="width: 140px" autocomplete="off">
+						<h4 class="horizontal lead">today!</h4>
 					</div>
 					
 					<h3 id="fomo-result" class="result-message lead vertical"></h3>
@@ -291,7 +292,7 @@
 					</div>
 
 					<div class="col fc-2">
-						Made with ❤️ at College Park in 2018. Go Terps!
+						Made with ❤️ in College Park in 2018. Go Terps!
 					</div>
 
 					<div class="col fc-3">
@@ -321,9 +322,9 @@
 			});
 		</script>
 		<script>
-			$( function() {
+			$(function() {
 				$("#fomo-date").datepicker();
-			} );
+			});
 		</script>
     </body>
 </html>

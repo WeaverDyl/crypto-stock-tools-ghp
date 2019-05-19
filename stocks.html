@@ -41,82 +41,109 @@
 			<h1 class="heading">Stock Calculators</h1>
 
 			<div name="stock-price-calculator" class="center-content">
-					<h2><strong>Stock Price Calculator:</strong></h2>
-					<h3 class="lead vertical-bottom"><strong>Enter the number of stocks you'd like to buy and a company ticker symbol, and this will calculate the cost of those stocks!</strong></h3>
+				<h2><strong>Stock Price Calculator:</strong></h2>
+				<h3 class="lead vertical-bottom"><strong>Enter the number of stocks you'd like to buy and a company ticker symbol, and this will calculate the cost of those stocks!</strong></h3>
 
-					<div class="rendered-form">
-						<div class="form-inline form-group center">
-							<input id="stock-price-quantity" class="form-control center-content text-overflow" type="text" value="1" placeholder="1" style="width: 100px" autocomplete="off">
-							<h3 class="horizontal lead text-overflow">x</h3>
-							<input id="stock-price-ticker" class="form-control center-content autocompleted text-overflow" type="text" style="width: 200px" placeholder="MSFT, AAPL, AMZN" autocomplete="off">
-							<h4 class="horizontal lead text-overflow">=</h4>
-							<span class="form-inline">
-									<h4 class="horizontal lead text-overflow">$</h4>
-									<input id="stock-price-cost" class="form-control disabled center-content text-overflow" type="text" placeholder="0" readonly="readonly" style="width: 140px" autocomplete="off">
-									<h4 class="horizontal lead text-overflow">USD</h4>
-							</span>
+				<div class="rendered-form">
+					<div class="form-inline form-group center">
+						<input id="stock-price-quantity" class="form-control center-content text-overflow" type="text" value="1" placeholder="1" style="width: 100px" autocomplete="off">
+						<h3 class="horizontal lead text-overflow">x</h3>
+						<input id="stock-price-ticker" class="form-control center-content autocompleted text-overflow" type="text" style="width: 200px" placeholder="MSFT, AAPL, AMZN" autocomplete="off">
+						<h4 class="horizontal lead text-overflow">=</h4>
+						<span class="form-inline">
+								<h4 class="horizontal lead text-overflow">$</h4>
+								<input id="stock-price-cost" class="form-control disabled center-content text-overflow" type="text" placeholder="0" readonly="readonly" style="width: 140px" autocomplete="off">
+								<h4 class="horizontal lead text-overflow">USD</h4>
+						</span>
+					</div>
+
+					<h4 id="stock-info"><strong></strong></h4>
+
+					<div name="stock-info-columns" class="flex-grid">
+						<div id="daily-high-div" class="flex-grid col lead">
+							<div class="flex-inner-col">
+								<img src="static/images/blank.svg" class="coin"/>
+								<input id="daily-high-text" class="form-control disabled center-content" type="text" placeholder="?" style="width: 125px" readonly="readonly" autocomplete="off">
+								<p><strong>Daily High</strong></br>(USD)</p>
+							</div>
 						</div>
 
-						<h4 id="stock-info"><strong></strong></h4>
-
-						<div name="stock-info-columns" class="flex-grid">
-							<div id="daily-high-div" class="flex-grid col lead">
-								<div class="flex-inner-col">
-									<img src="static/images/blank.svg" class="coin"/>
-									<input id="daily-high-text" class="form-control disabled center-content" type="text" placeholder="?" style="width: 125px" readonly="readonly" autocomplete="off">
-									<p><strong>Daily High</strong></br>(USD)</p>
-								</div>
+						<div id="daily-low-div" class="flex-grid col lead">
+							<div class="flex-inner-col">
+								<img src="static/images/blank.svg" class="coin"/>
+								<input id="daily-low-text" class="form-control disabled center-content" type="text" placeholder="?" style="width: 125px" readonly="readonly" autocomplete="off">
+								<p><strong>Daily Low</strong></br>(USD)</p>
 							</div>
+						</div>
 
-							<div id="daily-low-div" class="flex-grid col lead">
-								<div class="flex-inner-col">
-									<img src="static/images/blank.svg" class="coin"/>
-									<input id="daily-low-text" class="form-control disabled center-content" type="text" placeholder="?" style="width: 125px" readonly="readonly" autocomplete="off">
-									<p><strong>Daily Low</strong></br>(USD)</p>
-								</div>
+						<div id="daily-change-div" class="flex-grid col lead">
+							<div class="flex-inner-col">
+									<img id="up-daily" src="static/images/up.svg" class="coin"/>
+									<img id="down-daily" src="static/images/down.svg" class="coin"/>
+									<img id="steady-daily" src="static/images/neutral.svg" class="coin"/>
+								<input id="daily-change-pct" class="form-control disabled center-content" type="text" placeholder="?" style="width: 125px" readonly="readonly" autocomplete="off">
+								<p><strong>Daily Change</strong></br>(%)</p>
 							</div>
+						</div>
 
-							<div id="daily-change-div" class="flex-grid col lead">
-								<div class="flex-inner-col">
-										<img id="up-daily" src="static/images/up.svg" class="coin"/>
-										<img id="down-daily" src="static/images/down.svg" class="coin"/>
-										<img id="steady-daily" src="static/images/neutral.svg" class="coin"/>
-									<input id="daily-change-pct" class="form-control disabled center-content" type="text" placeholder="?" style="width: 125px" readonly="readonly" autocomplete="off">
-									<p><strong>Daily Change</strong></br>(%)</p>
-								</div>
+						<div id="yearly-change-div" class="flex-grid col lead">
+							<div class="flex-inner-col">
+								<img id="up-yearly" src="static/images/up.svg" class="coin"/>
+								<img id="down-yearly" src="static/images/down.svg" class="coin"/>
+								<img id="steady-yearly" src="static/images/neutral.svg" class="coin"/>
+								<input id="yearly-change-pct" class="form-control disabled center-content" type="text" placeholder="?" style="width: 125px" readonly="readonly" autocomplete="off">
+								<p><strong>Yearly Change</strong></br>(%)</p>
 							</div>
+						</div>
 
-							<div id="yearly-change-div" class="flex-grid col lead">
-								<div class="flex-inner-col">
-									<img id="up-yearly" src="static/images/up.svg" class="coin"/>
-									<img id="down-yearly" src="static/images/down.svg" class="coin"/>
-									<img id="steady-yearly" src="static/images/neutral.svg" class="coin"/>
-									<input id="yearly-change-pct" class="form-control disabled center-content" type="text" placeholder="?" style="width: 125px" readonly="readonly" autocomplete="off">
-									<p><strong>Yearly Change</strong></br>(%)</p>
-								</div>
+						<div id="52-week-high-div" class="flex-grid col lead">
+							<div class="flex-inner-col">
+								<img src="static/images/blank.svg" class="coin"/>
+								<input id="52-week-high-text" class="form-control disabled center-content" type="text" placeholder="?" style="width: 125px" readonly="readonly" autocomplete="off">
+								<p><strong>52 Week High</strong></br>(USD)</p>
 							</div>
+						</div>
 
-							<div id="52-week-high-div" class="flex-grid col lead">
-								<div class="flex-inner-col">
-									<img src="static/images/blank.svg" class="coin"/>
-									<input id="52-week-high-text" class="form-control disabled center-content" type="text" placeholder="?" style="width: 125px" readonly="readonly" autocomplete="off">
-									<p><strong>52 Week High</strong></br>(USD)</p>
-								</div>
-							</div>
-
-							<div id="52-week-low-div" class="flex-grid col lead">
-								<div class="flex-inner-col">
-									<img src="static/images/blank.svg" class="coin"/>
-									<input id="52-week-low-text" class="form-control disabled center-content" type="text" placeholder="?" style="width: 125px" readonly="readonly" autocomplete="off">
-									<p><strong>52 Week Low</strong></br>(USD)</p>
-								</div>
+						<div id="52-week-low-div" class="flex-grid col lead">
+							<div class="flex-inner-col">
+								<img src="static/images/blank.svg" class="coin"/>
+								<input id="52-week-low-text" class="form-control disabled center-content" type="text" placeholder="?" style="width: 125px" readonly="readonly" autocomplete="off">
+								<p><strong>52 Week Low</strong></br>(USD)</p>
 							</div>
 						</div>
 					</div>
-
-					<h3 id="stock-price-error" class="result-message lead"><strong></strong></h3>
-					<button id="stock-price-calculate-button" type="button" class="btn btn-primary btn-lg">Calculate Stock Price</button>
 				</div>
+
+				<h3 id="stock-price-error" class="result-message lead"><strong></strong></h3>
+				<button id="stock-price-calculate-button" type="button" class="btn btn-primary btn-lg">Calculate Stock Price</button>
+			</div>
+
+			<div name="historic-s-dollar-calculator" class="center-content">
+				<h2 class="vertical-top-lg"><strong>Historic Stock Price Calculator:</strong></h2>
+				<h3 class="lead vertical-bottom"><strong>Enter an amount to invest in a company on a certain date, and figure out how rich you could be now!</strong></h3>
+			
+				<div class="rendered-form">
+					<div class="form-inline form-group center">
+						<h3 class="horizontal lead text-overflow">If you invested $</h3>
+						<input id="historic-s-dollar-quantity" class="form-control center-content text-overflow" type="text" value="1" placeholder="1" style="width: 100px" autocomplete="off">
+						<h3 class="horizontal lead text-overflow">in</h3>
+						<input id="historic-s-dollar-ticker" class="form-control center-content autocompleted text-overflow" type="text" style="width: 200px" placeholder="MSFT, AAPL, AMZN" autocomplete="off">
+						<h3 class="horizontal lead text-overflow">on</h3>
+						<input id="historic-s-dollar-date" class="form-control center-content" type="text" placeholder="mm/dd/yyyy" style="width: 125px" autocomplete="off">
+						<h4 class="horizontal lead text-overflow">, you would have</h4>
+						<span class="form-inline">
+								<h4 class="horizontal-right lead text-overflow">$</h4>
+								<input id="historic-s-dollar-cost" class="form-control disabled center-content text-overflow" type="text" placeholder="0" readonly="readonly" style="width: 140px" autocomplete="off">
+								<h4 class="horizontal lead text-overflow">USD today!</h4>
+						</span>
+					</div>
+
+					<h4 id="historic-s-dollar-info"><strong></strong></h4>
+				</div>
+
+				<h3 id="historic-s-dollar-error" class="result-message lead"><strong></strong></h3>
+				<button id="historic-s-dollar-calculate-button" type="button" class="btn btn-primary btn-lg">Calculate Potential Riches</button>
+			</div>
 
 			<div name="portfolio-adder" class="center-content">
 				<h2 class="vertical-top-lg"><strong>Portfolio Adder:</strong></h2>
@@ -132,20 +159,13 @@
 
 				<h3 id="portfolio-result" class="result-message lead vertical-bottom"><strong></strong></h3>
 
-				<div class="flex-grid">
+				<div class="flex-grid vertical-bottom">
 					<div class="col">
 						<button id="portfolio-remove-button" type="button" class="btn btn-primary btn-lg horizontal-left-large button-overflow">Remove Entry</button>
 						<button id="portfolio-calculate-button" type="button" class="btn btn-primary btn-lg horizontal-left-large button-overflow">Calculate Portfolio Worth</button>
 						<button id="portfolio-add-button" type="button" class="btn btn-primary btn-lg horizontal-left-large button-overflow">Add Entry</button>
 					</div>
 				</div>
-			</div>
-
-			<div class="vertical-top-lg center-content">
-				<h2><strong>Coming Eventually:</strong></h2>
-				<ul class="lead">
-					<li><strong>A historical stock investment calculator (Once IEX updates its API 😠)</strong></li>
-				</ul>
 			</div>
 
 			<footer class="footer">
@@ -155,7 +175,7 @@
 					</div>
 
 					<div class="col fc-2">
-						Made with ❤️ at College Park in 2018. Go Terps!
+						Made with ❤️ in College Park in 2018. Go Terps!
 					</div>
 
 					<div class="col fc-3">
@@ -181,6 +201,17 @@
 							$(this).addClass('active');
 						}
 					});
+				});
+			</script>
+			<script>
+				$(function() {
+					$("#historic-stock-date").datepicker();
+				});
+				$(function() {
+					$("#historic-s-stock-date").datepicker();
+				});
+				$(function() {
+					$("#historic-s-dollar-date").datepicker();
 				});
 			</script>
         </div>

@@ -23,11 +23,17 @@
 .vertical-top {
     margin-top: 10px;
 }
+.vertical-top-md {
+    margin-top: 25px;
+}
 .vertical-top-lg {
     margin-top: 100px;
 }
 .vertical-bottom {
     margin-bottom: 15px;
+}
+.vertical-bottom-lg {
+    margin-bottom: 25px;
 }
 body {
     padding-bottom: 65px;

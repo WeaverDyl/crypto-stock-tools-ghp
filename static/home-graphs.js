@@ -10,7 +10,7 @@ function dateAxis() {
     var dateString = new Date().toISOString().split('T')[0].split('-');
 
     var date = new Date(dateString[0], dateString[1] - 1, dateString[2]);
-    
+
     // Add the past 30 days for the x-axis in 'mm-dd' format
     for (var i = 30; i > 0; i--) {
         past30Days.push(new Date(date.getFullYear(), date.getMonth(), date.getDate() - i).format('mm-dd'))
@@ -28,7 +28,10 @@ function getCoinValue(coin, limit) {
     var url = `https://min-api.cryptocompare.com/data/histoday?fsym=${coin}&tsym=USD&limit=${limit}&aggregate=1`;
 
     // Return JSON parse
-    return $.ajax({url: url, async: false});
+    return $.ajax({
+        url: url,
+        async: false
+    });
 }
 
 function generateBitcoinChart() {
@@ -75,62 +78,80 @@ function generateBitcoinChart() {
     });
 
     new Chart(document.getElementById("bitcoinChart"), {
-    type: 'line',
-    data: {
-      labels: dateAxis(),
-      datasets: [{ 
-            data: bitcoinValues,
-            label: "Bitcoin",
-            borderColor: "#FF9900",
-            fill: false
+        type: 'line',
+        data: {
+            labels: dateAxis(),
+            datasets: [{
+                    data: bitcoinValues,
+                    label: "Bitcoin",
+                    borderColor: "#FF9900",
+                    fill: false
+                },
+                {
+                    data: ethereumValues,
+                    label: "Ethereum",
+                    borderColor: "#3C3C3D",
+                    fill: false
+                },
+                {
+                    data: litecoinValues,
+                    label: "Litecoin",
+                    borderColor: "#00aeff",
+                    fill: false
+                },
+                {
+                    data: bitcoinCashValues,
+                    label: "Bitcoin Cash",
+                    borderColor: "#ee8c28",
+                    fill: false
+                },
+                {
+                    data: dashValues,
+                    label: "Dash",
+                    borderColor: "#787878",
+                    fill: false
+                },
+            ]
         },
-        { 
-            data: ethereumValues,
-            label: "Ethereum",
-            borderColor: "#3C3C3D",
-            fill: false
-        },
-        { 
-            data: litecoinValues,
-            label: "Litecoin",
-            borderColor: "#00aeff",
-            fill: false
-        },
-        { 
-            data: bitcoinCashValues,
-            label: "Bitcoin Cash",
-            borderColor: "#ee8c28",
-            fill: false
-        },
-        { 
-            data: dashValues,
-            label: "Dash",
-            borderColor: "#787878",
-            fill: false
-        },
-      ]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-            ticks: {
-                min: 0,
-                stepSize: 2000,
-            },
-            scaleLabel: {
-                display: true,
-                labelString: 'Price (USD)'
+        options: {
+            scales: {
+                yAxes: [{
+                    type: 'logarithmic',
+                    ticks: {
+                        beginAtZero: true,
+                        min: 0,
+                        callback: function(tick, index, ticks) {
+                            return tick.toLocaleString();
+                        },
+                    },
+                    afterBuildTicks: function(chart) {
+                        var maxTicks = 20;
+                        var maxLog = Math.log(chart.ticks[0]);
+                        var minLogDensity = maxLog / maxTicks;
+
+                        var ticks = [];
+                        var currLog = -Infinity;
+                        _.each(chart.ticks.reverse(), function(tick) {
+                            var log = Math.max(0, Math.log(tick));
+                            if (log - currLog > minLogDensity) {
+                                ticks.push(tick);
+                                currLog = log;
+                            }
+                        });
+                        chart.ticks = ticks;
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Price (USD)'
+                    }
+                }],
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Date'
+                    }
+                }]
             }
-        }],
-        xAxes: [{
-            scaleLabel: {
-              display: true,
-              labelString: 'Date'
-            }
-          }]
-      } 
-    }
-  });
+        }
+    });
 }
-  
-  

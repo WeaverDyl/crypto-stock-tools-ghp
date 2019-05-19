@@ -151,7 +151,7 @@ $('#fomo-calculate-button').on('click',function(){
  */
 function fomoHasIssues() {
     var investmentAmount = $('#fomo-amount-invested').val(); // Numeric investment amount
-    var unparsedDate = $('#fomo-date').val(); // Used to check if date field is empty
+    var userDate = new Date($('#fomo-date').val()); // Used to check if date field is empty
 
     // Check for various issues that could arise
     if(isNaN(investmentAmount)) {
@@ -160,14 +160,22 @@ function fomoHasIssues() {
         return "Your investment is negative! Make sure your investment amount is positive.";
     } else if (investmentAmount === "") {
         return "You forgot to enter an investment! Enter a numeric investment amount.";
-    } else if (!unparsedDate) {
+    } else if (!isValidDate(userDate)) {
         return "You forgot to enter a date! Either enter a date in mm/dd/yyyy format, or use the attached calendar.";
+    } else if (isValidDate(userDate) && userDate > new Date()) {
+        return "You entered a date that's in the future! Please enter a valid date."
     }
-
-    // We don't need to check for future dates, because the calendar won't allow a user to set a date in the future.
 
     // There are no more errors to check!
     return false;
+}
+
+/**
+ * Checks if a date is valid
+ * @param {Date} d the given date
+ */
+function isValidDate(d) {
+    return d instanceof Date && !isNaN(d);
 }
 
 /**
@@ -219,9 +227,9 @@ $('#networth-calculate-button').on('click',function() {
     
         // Set the result field
         $('#networth-result').html(`Your net worth in cryptocurrency is $${cryptoNetWorth.toLocaleString(undefined, {
-                                                                                                minimumFractionDigits: 2,
-                                                                                                maximumFractionDigits: 2 })}.
-                                                    That's ${cryptoAsAPercent}% of your total net worth!`);
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2 })}.
+                                    That's ${cryptoAsAPercent}% of your total net worth!`);
     } else {
         // Otherwise, there was an issue, so let the user know what the issue is
         $('#networth-result').html(checkForIssues);

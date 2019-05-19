@@ -1,4 +1,9 @@
 $(document).ready(function() {
+    // Set the maximum date to yesterday for the historic stock calculator calendar
+    $.datepicker.setDefaults({
+        maxDate: '-1'
+    });
+
     // Elements for stock price calculator info
     var allElements = ["#stock-info", "#daily-high-div", "#daily-low-div", "#daily-change-div", "#yearly-change-div", "#52-week-high-div", "#52-week-low-div",
                         "#up-daily", "#down-daily", "#steady-daily", "#up-yearly", "#down-yearly", "#steady-yearly"];
@@ -185,6 +190,82 @@ $('#stock-price-calculate-button').on('click',function() {
     }
 });
 
+// Calculates the value of a user-specified dollar investment on a 
+// certain date for a specified company
+$('#historic-s-dollar-calculate-button').on('click',function() {
+    var numDollars = $('#historic-s-dollar-quantity').val();
+    var userTicker = $('#historic-s-dollar-ticker').val();
+    var userDate = new Date($('#historic-s-dollar-date').val());
+    var $resultElem = $('#historic-s-dollar-info');
+    var $errorElem = $('#historic-s-dollar-error');
+    var checkForIssues = historicStockCalcHasIssues(numDollars, userTicker, userDate);
+
+    if (!checkForIssues) {
+        $('#historic-s-dollar-ticker').val(userTicker.toUpperCase()); // Convert user ticker to uppercase
+        $.when(getStockPrice(userTicker, true)).then(function(data) { 
+            // var minDate = new Date(data[0].date);
+
+            // // Check that the user date is not older than the oldest date
+            // if (userDate < minDate) {
+            //     // If it is older, just use the minDate
+            //     userDate = minDate;
+            // }
+
+            // var result = (numberOfStocks * data.latestPrice).toLocaleString(undefined, {
+            //     minimumFractionDigits: 2,
+            //     maximumFractionDigits: 2
+            // });
+            // $('#historic-s-dollar-error').html(""); // If there was a previous error, clear it
+            // $resultElem.val(`${result}`); // Print the formatted price
+            alert("hi")
+        });   
+        // get stock value today
+        //get stock value from given date (if too old, use oldest date available)
+        // if user date was too old, tell them you're using xx/xx/xxxx instead as it was the oldest available
+        
+        //if (userDate < new Date(api[0].date)) {
+        //  say("owo u did wong")    
+        //}
+        
+        //divide number of dollars by price of old stock (this is the num of stocks u could buy with that money)
+        //then multiply that value by the current cost of stock to get possible earnings! done!
+
+        alert("good")
+
+        //clear previous errors
+        //print results
+    } else {
+        $errorElem.html(checkForIssues); // Otherwise, there were issues, so let the user know what they did wrong
+    }
+});
+
+/**
+ * Checks the historical price calculator for any issues such as
+ * negative investment, invalid date, etc...
+ * @param {HTMLElement} numInvested The amount invested by the user
+ * @param {HTMLElement} userTicker The company to calculate for
+ * @param {HTMLElement} userDate The date entered by the user
+ */
+function historicStockCalcHasIssues(numInvested, userTicker, userDate) {
+    if (numInvested < 0 || isNaN(numInvested)) {
+        return "Please enter a positive investment!";
+    } else if (!validTicker(userTicker)) {
+        return "Please enter a valid ticker symbol!";
+    } else if (!isValidDate(userDate)) {
+        return "You forgot to enter a date! Either enter a date in mm/dd/yyyy format, or use the attached calendar.";
+    } else if (isValidDate(userDate) && userDate >= new Date()) {
+        return "You entered a date that we don't have data for! Please enter a valid date."
+    }
+}
+
+/**
+ * Checks if a date is valid
+ * @param {Date} d the given date
+ */
+function isValidDate(d) {
+    return d instanceof Date && !isNaN(d);
+}
+
 /**
  * Checks the stock price calculator fields to make sure everything was input correctly by the user
  * @param {HTMLElement} numberOfStocks The field containing the number of stocks to calculate the price for
@@ -193,8 +274,6 @@ $('#stock-price-calculate-button').on('click',function() {
 function stockCalculatorHasIssues(numberOfStocks, userTicker) {
     if (numberOfStocks < 0 || isNaN(numberOfStocks)) {
         return "Please enter a positive number of stocks!";
-    } else if (userTicker == "") {
-        return "Please enter a ticker symbol!";
     } else if (!validTicker(userTicker)) {
         return "Please enter a valid ticker symbol!";
     }
@@ -284,6 +363,7 @@ function showStockInformation(userTicker) {
     $.each(nonImageElements, function() {
         $(this).css('display', 'inline-flex');
     })
+    
     // Decide which image to show for daily change, based on the change percentage
     if (Number($('#daily-change-pct').val()) > 0) {
         $('#up-daily').css('display', 'inline-flex');
@@ -304,9 +384,22 @@ function showStockInformation(userTicker) {
 }
 
 /**
+ * Gets the historic price of one stock for a given companies ticker symbol
+ * @param {string} tickerSymbol The ticker symbol for the company
+ * @param {Boolean} asyncVal Whether the function should run asynchronously or not
+ */
+function getHistoricalStockPrice(userTicker, asyncVal) {
+    var publishToken = "pk_7fe33404a0bc4358a68c94dbc0656bba";
+    var url = `https://cloud.iexapis.com/beta/stock/${userTicker}/chart/max?token=${publish_token}`;
+
+    return $.ajax({url: url, async: asyncVal});
+}
+
+
+/**
  * Gets the current price of one stock for a given companies ticker symbol
  * @param {string} tickerSymbol The ticker symbol for the company
- * @param {Boolean} asyncVal Where the function should run asynchronously or not
+ * @param {Boolean} asyncVal Whether the function should run asynchronously or not
  */
 function getStockPrice(tickerSymbol, asyncVal) {
     var publish_token = "pk_7fe33404a0bc4358a68c94dbc0656bba";
